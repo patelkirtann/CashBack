@@ -1,0 +1,75 @@
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical"
+    tools:context="com.calculator.cashback.Fragments.CalculateFragment">
+
+    <RelativeLayout
+        android:id="@+id/rl_calculate_layout"
+        android:layout_width="match_parent"
+        android:layout_height="@dimen/nav_header_height"
+        android:background="@color/colorPrimaryLight">
+        <ImageView
+            android:layout_width="50dp"
+            android:layout_height="50dp"
+            app:srcCompat="@drawable/ic_profits"
+            android:layout_alignBottom="@+id/et_amount"
+            android:layout_alignParentLeft="true"
+            android:layout_alignParentStart="true"
+            android:layout_marginLeft="16dp"
+            android:layout_marginStart="16dp" />
+
+        <Spinner
+            android:id="@+id/spinner_list"
+            android:layout_width="80dp"
+            android:layout_height="wrap_content"
+            android:layout_above="@+id/et_amount"
+            android:layout_alignLeft="@+id/et_amount"
+            android:layout_alignStart="@+id/et_amount"
+            android:hapticFeedbackEnabled="true">
+
+        </Spinner>
+
+        <EditText
+            android:id="@+id/et_amount"
+            android:layout_width="120dp"
+            android:layout_height="wrap_content"
+            android:layout_alignParentLeft="true"
+            android:layout_alignParentStart="true"
+            android:layout_centerVertical="true"
+            android:layout_marginLeft="100dp"
+            android:layout_marginStart="100dp"
+            android:hint="@string/_0_00"
+            android:inputType="numberDecimal"
+            android:maxLength="10"
+            android:textColor="@color/colorAccent"
+            android:textStyle="bold"
+            android:theme="@style/TextFieldTheme"
+            android:typeface="monospace" />
+
+
+        <Button
+            android:id="@+id/button"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="@string/cypher"
+            android:textColor="@color/TextColorWhite"
+            android:background="@drawable/button"
+            android:layout_marginLeft="30dp"
+            android:layout_marginStart="30dp"
+            android:layout_alignBottom="@+id/et_amount"
+            android:layout_toRightOf="@+id/et_amount"
+            android:layout_toEndOf="@+id/et_amount" />
+
+    </RelativeLayout>
+
+    <android.support.v7.widget.RecyclerView
+        android:id="@+id/rv_resultList"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent">
+
+    </android.support.v7.widget.RecyclerView>
+
+</LinearLayout>
