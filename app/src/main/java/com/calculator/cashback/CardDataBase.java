@@ -14,7 +14,7 @@ public class CardDataBase extends SQLiteOpenHelper {
     private static final String CARD_TABLE_NAME = "card_details_table";
     private static final String CARD_COLUMN_ID = "id";
     private static final String CARD_COLUMN_NAME = "card_name";
-    private static final String CARD_COLUMN_CATAGORY = "card_category";
+    private static final String CARD_COLUMN_CATEGORY = "card_category";
     private static final String CARD_COLUMN_PERCENTAGES = "card_percentage";
     private static final String CARD_COLUMN_LOGO = "card_logo";
 
@@ -37,7 +37,7 @@ public class CardDataBase extends SQLiteOpenHelper {
                 "create table " + CARD_TABLE_NAME +
                         "(" + CARD_COLUMN_ID + " integer not null primary key, " +
                         CARD_COLUMN_NAME + " text," +
-                        CARD_COLUMN_CATAGORY + " text," +
+                        CARD_COLUMN_CATEGORY + " text," +
                         CARD_COLUMN_PERCENTAGES + " text, " +
                         CARD_COLUMN_LOGO + " integer," +
                         ")"
@@ -48,6 +48,4 @@ public class CardDataBase extends SQLiteOpenHelper {
     public void onUpgrade(SQLiteDatabase sqLiteDatabase, int oldVersion, int newVersion) {
 
     }
-
-
 }

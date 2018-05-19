@@ -2,13 +2,33 @@
 <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
     android:orientation="vertical">
 
     <android.support.v17.leanback.widget.HorizontalGridView
         android:id="@+id/gv_logo_grid"
         android:layout_width="match_parent"
-        android:layout_height="80dp"
+        android:layout_height="100dp"
         android:background="@color/colorAccent"/>
+    <RelativeLayout
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_gravity="center">
+        <ImageView
+            android:id="@+id/iv_selected_logo"
+            android:layout_width="80dp"
+            android:layout_height="80dp"
+            android:layout_margin="10dp"/>
+        <ImageButton
+            android:id="@+id/ib_cancel_logo"
+            android:layout_width="10dp"
+            android:layout_height="10dp"
+            app:srcCompat="@drawable/ic_close"
+            android:visibility="gone"
+            android:layout_alignTop="@+id/iv_selected_logo"
+            android:layout_alignEnd="@+id/iv_selected_logo" />
+    </RelativeLayout>
+
 
     <ScrollView
         android:layout_width="match_parent"
@@ -23,6 +43,7 @@
                 android:layout_width="240dp"
                 android:layout_height="wrap_content"
                 android:layout_gravity="center"
+                android:singleLine="true"
                 android:hint="Card's Nick Name"/>
 
             <AutoCompleteTextView
@@ -30,7 +51,13 @@
                 android:layout_width="240dp"
                 android:layout_height="wrap_content"
                 android:layout_gravity="center"
+                android:singleLine="true"
                 android:hint="Cash Back Category" />
+
+            <Spinner
+                android:id="@+id/sp_category_list"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content" />
 
             <EditText
                 android:id="@+id/et_add_percent"
@@ -39,8 +66,12 @@
                 android:layout_gravity="center"
                 android:hint="Cash Back Percentage(%)"
                 android:inputType="numberDecimal" />
-        </LinearLayout>
 
+            <Button
+                android:layout_width="160dp"
+                android:layout_height="50dp"
+                android:layout_gravity="center"/>
+        </LinearLayout>
 
     </ScrollView>
 
