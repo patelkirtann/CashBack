@@ -84,4 +84,5 @@
 
     <string name="pref_title_vibrate">Vibrate</string>
     <string name="title_activity_add_card">AddCard</string>
+    <string name="card_logo">Card_Logo</string>
 </resources>

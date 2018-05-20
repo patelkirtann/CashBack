@@ -4,11 +4,16 @@ import android.content.Context;
 import android.net.Uri;
 import android.os.Bundle;
 import android.support.v4.app.Fragment;
+import android.support.v7.widget.LinearLayoutManager;
+import android.support.v7.widget.RecyclerView;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 
+import com.calculator.cashback.AllCardsAdapter;
 import com.calculator.cashback.R;
+
+import java.util.ArrayList;
 
 
 /**
@@ -24,6 +29,9 @@ public class AllCardsFragment extends Fragment {
     // the fragment initialization parameters, e.g. ARG_ITEM_NUMBER
     private static final String ARG_PARAM1 = "param1";
     private static final String ARG_PARAM2 = "param2";
+    RecyclerView mRecyclerView;
+    ArrayList<String> list = new ArrayList<>();
+    private LinearLayoutManager layoutManager = new LinearLayoutManager(getContext());
 
     // TODO: Rename and change types of parameters
     private String mParam1;
@@ -33,6 +41,9 @@ public class AllCardsFragment extends Fragment {
 
     public AllCardsFragment() {
         // Required empty public constructor
+        list.add("Visa");
+        list.add("Master");
+        list.add("Discover");
     }
 
     /**
@@ -66,7 +77,11 @@ public class AllCardsFragment extends Fragment {
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
         // Inflate the layout for this fragment
-        return inflater.inflate(R.layout.fragment_all_cards, container, false);
+        View view = inflater.inflate(R.layout.fragment_all_cards, container, false);
+        mRecyclerView = view.findViewById(R.id.rv_all_cards);
+        mRecyclerView.setLayoutManager(layoutManager);
+        mRecyclerView.setAdapter(new AllCardsAdapter(list));
+        return view;
     }
 
     // TODO: Rename method, update argument and hook method into UI event

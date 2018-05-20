@@ -1,13 +1,16 @@
-<FrameLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<android.support.constraint.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     tools:context="com.calculator.cashback.Fragments.AllCardsFragment">
 
-    <ImageView
+    <android.support.v7.widget.RecyclerView
+        android:id="@+id/rv_all_cards"
         android:layout_width="match_parent"
-        android:layout_height="match_parent"
-        app:srcCompat= "@drawable/ic_credit_card"/>
+        android:layout_height="wrap_content"
+        android:padding="10dp">
 
-</FrameLayout>
+    </android.support.v7.widget.RecyclerView>
+
+</android.support.constraint.ConstraintLayout>
