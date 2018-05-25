@@ -1,0 +1,42 @@
+{
+  "project_info": {
+    "project_number": "983717340871",
+    "firebase_url": "https://cashbackcal-6f21e.firebaseio.com",
+    "project_id": "cashbackcal-6f21e",
+    "storage_bucket": "cashbackcal-6f21e.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:983717340871:android:e1b8cfab3a370c66",
+        "android_client_info": {
+          "package_name": "com.calculator.cashback"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "983717340871-f7gh16bf5of72sfoi7p68ndlhdblpid3.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyCzUccRdujq6GuA_8xI4dS5zxTCUwSXaD0"
+        }
+      ],
+      "services": {
+        "analytics_service": {
+          "status": 1
+        },
+        "appinvite_service": {
+          "status": 1,
+          "other_platform_oauth_client": []
+        },
+        "ads_service": {
+          "status": 2
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}

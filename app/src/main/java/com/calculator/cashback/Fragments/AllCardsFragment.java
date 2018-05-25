@@ -3,17 +3,31 @@ package com.calculator.cashback.Fragments;
 import android.content.Context;
 import android.net.Uri;
 import android.os.Bundle;
+import android.support.annotation.NonNull;
 import android.support.v4.app.Fragment;
 import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.RecyclerView;
+import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 
 import com.calculator.cashback.AllCardsAdapter;
 import com.calculator.cashback.R;
+import com.google.android.gms.tasks.OnCompleteListener;
+import com.google.android.gms.tasks.OnFailureListener;
+import com.google.android.gms.tasks.OnSuccessListener;
+import com.google.android.gms.tasks.Task;
+import com.google.firebase.firestore.DocumentReference;
+import com.google.firebase.firestore.DocumentSnapshot;
+import com.google.firebase.firestore.FirebaseFirestore;
+import com.google.firebase.firestore.QuerySnapshot;
 
 import java.util.ArrayList;
+import java.util.HashMap;
+import java.util.Map;
+
+import static android.support.constraint.Constraints.TAG;
 
 
 /**
@@ -32,6 +46,8 @@ public class AllCardsFragment extends Fragment {
     RecyclerView mRecyclerView;
     ArrayList<String> list = new ArrayList<>();
     private LinearLayoutManager layoutManager = new LinearLayoutManager(getContext());
+    FirebaseFirestore db = FirebaseFirestore.getInstance();
+    Map<String, Object> cardType = new HashMap<>();
 
     // TODO: Rename and change types of parameters
     private String mParam1;
@@ -44,6 +60,11 @@ public class AllCardsFragment extends Fragment {
         list.add("Visa");
         list.add("Master");
         list.add("Discover");
+
+        cardType.put("type","Changed");
+        cardType.put("secondType","second");
+//        cardType.put("type","Master");
+//        cardType.put("type","Discover");
     }
 
     /**
@@ -71,6 +92,51 @@ public class AllCardsFragment extends Fragment {
             mParam1 = getArguments().getString(ARG_PARAM1);
             mParam2 = getArguments().getString(ARG_PARAM2);
         }
+
+        db.collection("cardType").document("8wWmjRKA7fnzKGg0dppY").collection("iinerCollection")
+                .add(cardType)
+                .addOnSuccessListener(new OnSuccessListener<DocumentReference>() {
+                    @Override
+                    public void onSuccess(DocumentReference documentReference) {
+                        Log.d(TAG, "DocumentSnapshot added with ID: " + documentReference.getId());
+                    }
+                })
+                .addOnFailureListener(new OnFailureListener() {
+                    @Override
+                    public void onFailure(@NonNull Exception e) {
+                        Log.w(TAG, "Error adding document", e);
+                    }
+                });
+
+        db.collection("cardType")
+                .get()
+                .addOnCompleteListener(new OnCompleteListener<QuerySnapshot>() {
+                    @Override
+                    public void onComplete(@NonNull Task<QuerySnapshot> task) {
+                        if (task.isSuccessful()){
+                            Log.d(TAG, "All documents data: " + task.getResult().getDocuments().size());
+                        }
+                    }
+                });
+
+
+        db.collection("cardType").document("8wWmjRKA7fnzKGg0dppY").collection("iinerCollection").document("innerDocument")
+                .get()
+                .addOnCompleteListener(new OnCompleteListener<DocumentSnapshot>() {
+                    @Override
+                    public void onComplete(@NonNull Task<DocumentSnapshot> task) {
+                        if (task.isSuccessful()) {
+                            DocumentSnapshot document = task.getResult();
+                            if (document.exists()) {
+                                Log.d(TAG, "DocumentSnapshot data: " + document.getData());
+                            } else {
+                                Log.d(TAG, "No such document");
+                            }
+                        } else {
+                            Log.d(TAG, "get failed with ", task.getException());
+                        }
+                    }
+                });
     }
 
     @Override
