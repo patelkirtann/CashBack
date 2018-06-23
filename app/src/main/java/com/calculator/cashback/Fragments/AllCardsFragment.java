@@ -93,6 +93,20 @@ public class AllCardsFragment extends Fragment {
             mParam2 = getArguments().getString(ARG_PARAM2);
         }
 
+        db.collection("cardType").document()
+                .set(cardType)
+                .addOnSuccessListener(new OnSuccessListener<Void>() {
+                    @Override
+                    public void onSuccess(Void aVoid) {
+
+                    }
+                })
+                .addOnFailureListener(new OnFailureListener() {
+                    @Override
+                    public void onFailure(@NonNull Exception e) {
+
+                    }
+                });
         db.collection("cardType").document("8wWmjRKA7fnzKGg0dppY").collection("iinerCollection")
                 .add(cardType)
                 .addOnSuccessListener(new OnSuccessListener<DocumentReference>() {
@@ -145,8 +159,12 @@ public class AllCardsFragment extends Fragment {
         // Inflate the layout for this fragment
         View view = inflater.inflate(R.layout.fragment_all_cards, container, false);
         mRecyclerView = view.findViewById(R.id.rv_all_cards);
-        mRecyclerView.setLayoutManager(layoutManager);
-        mRecyclerView.setAdapter(new AllCardsAdapter(list));
+        RecyclerView.Adapter adapter = new AllCardsAdapter(list);
+        LinearLayoutManager llm = new LinearLayoutManager(getContext());
+        llm.setOrientation(LinearLayoutManager.VERTICAL);
+        mRecyclerView.setLayoutManager(llm);
+        mRecyclerView.setAdapter(adapter);
+
         return view;
     }
 

@@ -85,4 +85,8 @@
     <string name="pref_title_vibrate">Vibrate</string>
     <string name="title_activity_add_card">AddCard</string>
     <string name="card_logo">Card_Logo</string>
+    <string name="login">login</string>
+    <string name="log_in">Log In</string>
+    <string name="welcome">Welcome</string>
+    <string name="app_logo">app_logo</string>
 </resources>
